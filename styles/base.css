@@ -4,27 +4,32 @@
 
 body {
 
-  background-color: #aaa;
-  color: #000;
+  background-color: #fffff0;
+  color: #003;
   font-family: "Work Sans", sans-serif;
 }
 
 header, footer {
-  background-color: #000;
-  color: #fff;
+  background-color: #8f8f8f;
+  color: #fc1;
   font-family: "Space Mono", sans-serif;
 }
 
 header h1 {
   margin-top: 0;
+  color: #003;
 }
 
 body a {
-  color: #000;
+  color: #003;
 }
 
 header a, footer a {
-  color: #fff;
+  color: #ccc;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: .5em;
+  padding-bottom: .5em;
 }
 
 
@@ -35,4 +40,12 @@ a {
 
 ul {
   list-style: none;
+}
+
+@media only screen and (min-width: 640px;) {
+   section {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
 }
