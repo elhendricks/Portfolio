@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+
+  background-color: #aaa;
+  color: #000;
+  font-family: "Work Sans", sans-serif;
+}
+
+header, footer {
+  background-color: #000;
+  color: #fff;
+  font-family: "Space Mono", sans-serif;
+}
+
+header h1 {
+  margin-top: 0;
+}
+
+body a {
+  color: #000;
+}
+
+header a, footer a {
+  color: #fff;
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}

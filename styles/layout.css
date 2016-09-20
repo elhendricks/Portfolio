@@ -1,0 +1,17 @@
+ul {
+  padding-left: 0;
+  width: 100%;
+
+}
+
+header {
+  text-align: center;
+}
+@media only screen and (min-width: 640px) {
+  header {
+    text-align: left;
+  }
+  header li {
+    display: inline-block;
+  }
+}
