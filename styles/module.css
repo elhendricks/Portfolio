@@ -1,0 +1,16 @@
+
+@media only screen and (min-width: 640px) {
+  header img {
+    width: 25%;
+    border-radius: 10%;
+    display: inline-block;
+  }
+
+  header h1 {
+    max-width: 50%;
+
+    display: inline-block;
+    font-size: 4em;
+  }
+
+}
