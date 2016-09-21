@@ -9,7 +9,7 @@ function Project (opts) {
 
 Project.prototype.toHtml = function () {
   var $newProject = $('section.template').clone();
-  
+
   $newProject.find('h2').html(this.title);
   $newProject.find('a').attr('href', this.github);
   $newProject.find('img').attr('alt', this.title);
@@ -20,6 +20,10 @@ Project.prototype.toHtml = function () {
 
   return $newProject;
 };
+
+selectedProjects.sort(function(curElem, nextElem) {
+  return (new Date(nextElem.published)) - (new Date(curElem.published));
+});
 
 selectedProjects.forEach(function(ele){
   projects.push(new Project(ele));
