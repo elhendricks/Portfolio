@@ -18,7 +18,7 @@ body a {
 
 header ul {
   width: 100%;
-  background-color: #EEB6B7;
+  background-color: #498391;
 }
 
 header a {
@@ -31,6 +31,7 @@ header a {
 section img {
   max-width: 90%;
   margin: auto;
+  border: solid 10px #E0072B;
 }
 
 
