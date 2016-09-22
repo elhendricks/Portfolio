@@ -1,6 +1,6 @@
-var pageNaviation = {};
+var pageNavigation = {};
 
-pageNaviation.handleTabs = function() {
+pageNavigation.handleTabs = function() {
   //on click of
   //tab $('.tab')
   //get the value of data-section attr
@@ -18,5 +18,25 @@ pageNaviation.handleTabs = function() {
   $('#main-nav .tab:first').click();
 };
 
+pageNavigation.toggleProjectLength = function() {
+  $('.project-description *:nth-of-type(n+2)').hide();
+
+  var descriptionShown = false;
+  $('#projects').on('click', '.read-toggle', function(event) {
+    event.preventDefault();
+    if (!descriptionShown) {
+      $(this).siblings('.project-description').find('*').show();
+      $(this).text('Show Less');
+      descriptionShown = true;
+    } else {
+      $('.project-description *:nth-of-type(n+2)').hide();
+      $(this).text('Read More');
+      descriptionShown = false;
+    }
+  });
+
+};
+
 //invoke the functions
-pageNaviation.handleTabs();
+pageNavigation.handleTabs();
+pageNavigation.toggleProjectLength();
