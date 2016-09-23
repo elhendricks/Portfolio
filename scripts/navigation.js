@@ -26,11 +26,11 @@ pageNavigation.toggleProjectLength = function() {
     event.preventDefault();
     if (!descriptionShown) {
       $(this).siblings('.project-description').find('*').show();
-      $(this).text('Show Less');
+      $(this).text('<< Show Less');
       descriptionShown = true;
     } else {
       $('.project-description *:nth-of-type(n+2)').hide();
-      $(this).text('Read More');
+      $(this).text('Read More >>');
       descriptionShown = false;
     }
   });
