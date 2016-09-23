@@ -26,7 +26,7 @@ Project.prototype.toHtml = function () {
 function toFilter() {
   var source = $('#filter-template').html();
   var template = Handlebars.compile(source);
-  var context = {filters: filters, projects: projects}
+  var context = {filters: filters, projects: projects};
   var html = template(context);
   return html;
 };
