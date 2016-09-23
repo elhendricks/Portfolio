@@ -24,12 +24,19 @@
     </script>
 
     <script id="filter-template" type="text/x-handlebars-template">
+
+    </script>
+
+<!-- This works with toFilterHtml -->
+    <!-- <script id="filter-template" type="text/x-handlebars-template">
       <li>
-        <select id="{{name}}-filter">
+        <select data-filter="{{name}}">
           <option value="">--Filter by {{name}}--</option>
         </select>
       </li>
-    </script>
+    </script> -->
+
+
 
   </head>
   <body>
@@ -49,11 +56,6 @@
     <section class="tab-section" id="projects">
       <div>
         <ul id="filters">
-          <li>
-            <select id="language-filter">
-
-            </select>
-          </li>
         </ul>
       </div>
     </section>
