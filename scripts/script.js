@@ -11,10 +11,10 @@ Project.prototype.toHtml = function () {
   var $newProject = $('section.template').clone();
 
   $newProject.find('h2').html(this.title);
-  $newProject.find('a').attr('href', this.github);
+  $newProject.find('.source-link').attr('href', this.github);
   $newProject.find('img').attr('alt', this.title);
   $newProject.find('img').attr('src', this.screenshot);
-  $newProject.find('p').html(this.description);
+  $newProject.find('.project-description').html(this.description);
 
   $newProject.removeClass('template');
 
