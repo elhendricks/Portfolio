@@ -25,9 +25,12 @@
 
     <script id="filter-template" type="text/x-handlebars-template">
       <li>
-
+        <select id="{{name}}-filter">
+          <option value="">--Filter by {{name}}--</option>
+        </select>
       </li>
     </script>
+
   </head>
   <body>
     <header>
@@ -48,6 +51,7 @@
         <ul id="filters">
           <li>
             <select id="language-filter">
+
             </select>
           </li>
         </ul>
