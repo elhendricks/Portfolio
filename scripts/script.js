@@ -16,20 +16,20 @@ Project.prototype.toHtml = function () {
   return html;
 };
 // This one works with
-// function toFilterHtml(f) {
-//   var source = $('#filter-template').html();
-//   var template = Handlebars.compile(source);
-//   var html = template(f);
-//   return html;
-// };
-
-function toFilter() {
+function toFilterHtml(f) {
   var source = $('#filter-template').html();
   var template = Handlebars.compile(source);
-  var context = {filters: filters, projects: projects};
-  var html = template(context);
+  var html = template(f);
   return html;
 };
+
+//   This does NOT work
+//   function toFilter(f) {
+//   var source = $('#filter-template').html();
+//   var template = Handlebars.compile(source);
+//   var html = template();
+//   return html;
+// };
 
 selectedProjects.sort(function(curElem, nextElem) {
   return (new Date(nextElem.published)) - (new Date(curElem.published));
@@ -43,10 +43,13 @@ selectedProjects.forEach(function(ele){
 
 
 //This works with toFilterHtml
-// filters.forEach(function(b) {
-//   $('#filters').append(toFilterHtml(b));
-// });
+filters.forEach(function(b) {
+  $('#filters').append(toFilterHtml(b));
+});
 
 projects.forEach(function(a) {
   $('#projects').append(a.toHtml());
 });
+
+// This does not work
+// $('#filters').append(toFilter());
