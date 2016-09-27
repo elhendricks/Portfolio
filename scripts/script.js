@@ -14,16 +14,15 @@ Project.prototype.toHtml = function () {
   var source = $('#project-template').html();
   var template = Handlebars.compile(source);
   var html = template(this);
-
   return html;
 };
-// // This one works with
-// function toFilterHtml(f) {
-//   var source = $('#filter-template').html();
-//   var template = Handlebars.compile(source);
-//   var html = template(f);
-//   return html;
-// };
+
+// This one works with
+function toFilterHtml(f) {
+  var template = Handlebars.compile($('#filter-template').html());
+  var html = template(f);
+  return html;
+};
 
 //   This does NOT work
 //   function toFilter(f) {
@@ -58,10 +57,10 @@ Project.fetchProjects = function() {
 };
 
 
-// //This works with toFilterHtml
-// filters.forEach(function(b) {
-//   $('#filters').append(toFilterHtml(b));
-// });
+//This works with toFilterHtml
+filters.forEach(function(b) {
+  $('#filters').append(toFilterHtml(b));
+});
 
 
 

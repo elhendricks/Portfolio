@@ -42,7 +42,7 @@ pageNavigation.renderPage = function() {
 
   Project.all.forEach(function(a)
   {
-    $('#projects').append(a.toHtml(''));
+    $('#projects').append(a.toHtml());
   });
   pageNavigation.handleTabs();
   pageNavigation.toggleProjectLength();
