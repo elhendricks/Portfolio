@@ -1,4 +1,4 @@
-var projects = [];
+
 var filters = [{name: 'title'}, {name: 'language'}];
 
 function Project (opts) {
@@ -8,6 +8,8 @@ function Project (opts) {
   this.screenshot = opts.screenshot;
 }
 
+Project.all = [];
+
 Project.prototype.toHtml = function () {
   var source = $('#project-template').html();
   var template = Handlebars.compile(source);
@@ -15,13 +17,13 @@ Project.prototype.toHtml = function () {
 
   return html;
 };
-// This one works with
-function toFilterHtml(f) {
-  var source = $('#filter-template').html();
-  var template = Handlebars.compile(source);
-  var html = template(f);
-  return html;
-};
+// // This one works with
+// function toFilterHtml(f) {
+//   var source = $('#filter-template').html();
+//   var template = Handlebars.compile(source);
+//   var html = template(f);
+//   return html;
+// };
 
 //   This does NOT work
 //   function toFilter(f) {
@@ -31,25 +33,37 @@ function toFilterHtml(f) {
 //   return html;
 // };
 
-selectedProjects.sort(function(curElem, nextElem) {
-  return (new Date(nextElem.published)) - (new Date(curElem.published));
-});
+Project.loadProjects = function(data) {
+  data.sort(function(curElem, nextElem) {
+    return (new Date(nextElem.published)) - (new Date(curElem.published));
+  }).forEach(function(ele){
+    Project.all.push(new Project(ele));
+  });
+};
+
+Project.fetchProjects = function() {
+  $.ajax({
+    method: 'GET',
+    url: '/data/projects.json',
+    error: function() {
+      console.log('There was an error getting the data');
+    },
+    success: function(data) {
+      // var parsedProjects = JSON.parse(data);
+      Project.loadProjects(data);
+      pageNavigation.renderPage();
+      console.log(data);
+    }
+  });
+};
 
 
+// //This works with toFilterHtml
+// filters.forEach(function(b) {
+//   $('#filters').append(toFilterHtml(b));
+// });
 
-selectedProjects.forEach(function(ele){
-  projects.push(new Project(ele));
-});
 
-
-//This works with toFilterHtml
-filters.forEach(function(b) {
-  $('#filters').append(toFilterHtml(b));
-});
-
-projects.forEach(function(a) {
-  $('#projects').append(a.toHtml());
-});
 
 // This does not work
-// $('#filters').append(toFilter());
+// $('#filters').append(toFilter())

@@ -38,5 +38,14 @@ pageNavigation.toggleProjectLength = function() {
 };
 
 //invoke the functions
-pageNavigation.handleTabs();
-pageNavigation.toggleProjectLength();
+pageNavigation.renderPage = function() {
+
+  Project.all.forEach(function(a)
+  {
+    $('#projects').append(a.toHtml(''));
+  });
+  pageNavigation.handleTabs();
+  pageNavigation.toggleProjectLength();
+};
+
+Project.fetchProjects();
