@@ -17,20 +17,13 @@ Project.prototype.toHtml = function () {
   return html;
 };
 
-// This one works with
+
 function toFilterHtml(f) {
   var template = Handlebars.compile($('#filter-template').html());
   var html = template(f);
   return html;
 };
 
-//   This does NOT work
-//   function toFilter(f) {
-//   var source = $('#filter-template').html();
-//   var template = Handlebars.compile(source);
-//   var html = template();
-//   return html;
-// };
 
 Project.loadProjects = function(data) {
   data.sort(function(curElem, nextElem) {
@@ -40,7 +33,9 @@ Project.loadProjects = function(data) {
   });
 };
 
-Project.fetchProjects = function() {
+
+
+Project.fetchProjects = function(next) {
   $.ajax({
     method: 'GET',
     url: '/data/projects.json',
@@ -49,20 +44,25 @@ Project.fetchProjects = function() {
     },
     success: function(data) {
       // var parsedProjects = JSON.parse(data);
-      Project.loadProjects(data);
+      next(data);
       pageNavigation.renderPage();
-      console.log(data);
     }
   });
 };
 
+Project.listProjects = function() {
+  console.log(filters.map(
+    function(filterObj) {
+      var filter = filterObj.name;
+      return Project.all.map(function(ProjectObj){
+        return filter;
+        //return { ProjectObj.filter};
+      }).reduce(function(){},{});
+    })
+  );
+};
 
-//This works with toFilterHtml
+
 filters.forEach(function(b) {
   $('#filters').append(toFilterHtml(b));
 });
-
-
-
-// This does not work
-// $('#filters').append(toFilter())

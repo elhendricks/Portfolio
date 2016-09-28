@@ -1,5 +1,6 @@
 var pageNavigation = {};
 
+
 pageNavigation.handleTabs = function() {
   //on click of
   //tab $('.tab')
@@ -48,4 +49,5 @@ pageNavigation.renderPage = function() {
   pageNavigation.toggleProjectLength();
 };
 
-Project.fetchProjects();
+Project.fetchProjects(Project.loadProjects);
+Project.fetchProjects(Project.listProjects);
