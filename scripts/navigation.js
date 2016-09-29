@@ -19,6 +19,10 @@ pageNavigation.handleTabs = function() {
   $('#main-nav .tab:first').click();
 };
 
+pageNavigation.handleFilters = function() {
+
+};
+
 pageNavigation.toggleProjectLength = function() {
   $('.project-description *:nth-of-type(n+2)').hide();
 
@@ -38,16 +42,19 @@ pageNavigation.toggleProjectLength = function() {
 
 };
 
+pageNavigation.handleProjects = function() { Project.all.forEach(function(a)
+  {
+  $('#projects').append(a.toHtml());
+});
+};
+
 //invoke the functions
 pageNavigation.renderPage = function() {
 
-  Project.all.forEach(function(a)
-  {
-    $('#projects').append(a.toHtml());
-  });
   pageNavigation.handleTabs();
+  pageNavigation.handleProjects();
   pageNavigation.toggleProjectLength();
 };
 
-Project.fetchProjects(Project.loadProjects);
-Project.fetchProjects(Project.listProjects);
+Project.fetchProjects(pageNavigation.renderPage);
+Project.fetchProjects(getThings);

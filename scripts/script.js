@@ -6,6 +6,10 @@ function Project (opts) {
   this.github = opts.github;
   this.description = opts.description;
   this.screenshot = opts.screenshot;
+  this.language = opts.language;
+  this.linesJS = opts.linesJS;
+  this.linesCSS = opts.linesCSS;
+  this.linesHTML = opts.linesHTML;
 }
 
 Project.all = [];
@@ -18,6 +22,7 @@ Project.prototype.toHtml = function () {
 };
 
 
+
 function toFilterHtml(f) {
   var template = Handlebars.compile($('#filter-template').html());
   var html = template(f);
@@ -25,13 +30,54 @@ function toFilterHtml(f) {
 };
 
 
+function toPopulateFilterHtml() {
+  var template = Handlebars.compile($('#category-template')).html();
+  var html = template ();
+  return html;
+};
+
+function getThings() {
+  var filterArray = filters.map(function(ele) {
+    return ele.name;
+  });
+
+console.log("filterArray: " + filterArray);
+  var categoryArray = filterArray.map(function(item) {
+    console.log("item: " + item);
+    return Project.all.map(function(thing) {
+      console.log("thing[item]: "+ thing[item]);
+      return {category: thing[item]};
+    });
+  });
+console.log("categoryArray: " + categoryArray);
+
+filterArray.forEach(function(){
+  categoryArray.forEach(function(junk){
+    console.log("junk.category " + junk.title);
+    toPopulateFilterHtml(junk);
+  });
+
+})
+};
+
+
+
+
+// console.log(categoryArray);
+
+
+
+
+
 Project.loadProjects = function(data) {
-  data.sort(function(curElem, nextElem) {
-    return (new Date(nextElem.published)) - (new Date(curElem.published));
-  }).forEach(function(ele){
-    Project.all.push(new Project(ele));
+  Project.all = data.map(function(ele) {
+    return new Project(ele);
   });
 };
+
+
+
+
 
 
 
@@ -44,22 +90,21 @@ Project.fetchProjects = function(next) {
     },
     success: function(data) {
       // var parsedProjects = JSON.parse(data);
-      next(data);
-      pageNavigation.renderPage();
+      Project.loadProjects(data);
+      next();
     }
   });
 };
 
 Project.listProjects = function() {
-  console.log(filters.map(
+  filters.map(
     function(filterObj) {
       var filter = filterObj.name;
       return Project.all.map(function(ProjectObj){
-        return filter;
-        //return { ProjectObj.filter};
-      }).reduce(function(){},{});
-    })
-  );
+        return ProjectObj.filter;
+        // return {filter: };
+      });
+    });
 };
 
 
