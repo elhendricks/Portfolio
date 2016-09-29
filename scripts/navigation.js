@@ -48,13 +48,18 @@ pageNavigation.handleProjects = function() { Project.all.forEach(function(a)
 });
 };
 
+pageNavigation.handleCodeLines = function () {
+  $('#projects').append('<h3>Erica has written '+ Project.countLines() +' lines of code--which is in no way a fabricated number.');
+};
+
 //invoke the functions
 pageNavigation.renderPage = function() {
 
   pageNavigation.handleTabs();
   pageNavigation.handleProjects();
   pageNavigation.toggleProjectLength();
+  pageNavigation.handleCodeLines();
 };
 
 Project.fetchProjects(pageNavigation.renderPage);
-Project.fetchProjects(getThings);
+// Project.fetchProjects(getThings);

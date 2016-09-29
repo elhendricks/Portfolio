@@ -36,38 +36,38 @@ function toPopulateFilterHtml() {
   return html;
 };
 
-function getThings() {
-  var filterArray = filters.map(function(ele) {
-    return ele.name;
-  });
-
-console.log("filterArray: " + filterArray);
-  var categoryArray = filterArray.map(function(item) {
-    console.log("item: " + item);
-    return Project.all.map(function(thing) {
-      console.log("thing[item]: "+ thing[item]);
-      return {category: thing[item]};
-    });
-  });
-console.log("categoryArray: " + categoryArray);
-
-filterArray.forEach(function(){
-  categoryArray.forEach(function(junk){
-    console.log("junk.category " + junk.title);
-    toPopulateFilterHtml(junk);
-  });
-
-})
-};
-
-
-
-
-// console.log(categoryArray);
-
-
-
-
+// function getThings() {
+//   var filterArray = filters.map(function(ele) {
+//     return ele.name;
+//   });
+//
+// console.log("filterArray: " + filterArray);
+//   var categoryArray = filterArray.map(function(item) {
+//     console.log("item: " + item);
+//     return Project.all.map(function(thing) {
+//       console.log("thing[item]: "+ thing[item]);
+//       return {category: thing[item]};
+//     });
+//   });
+// console.log("categoryArray: " + categoryArray);
+//
+// filterArray.forEach(function(){
+//   categoryArray.forEach(function(junk){
+//     console.log("junk.category " + junk.title);
+//     toPopulateFilterHtml(junk);
+//   });
+//
+// })
+// };
+//
+//
+//
+//
+// // console.log(categoryArray);
+//
+//
+//
+//
 
 Project.loadProjects = function(data) {
   Project.all = data.map(function(ele) {
@@ -78,8 +78,13 @@ Project.loadProjects = function(data) {
 
 
 
-
-
+Project.countLines = function() {
+  return Project.all.map(function(obj) {
+    return obj.linesCSS + obj.linesJS + obj.linesHTML;
+  }).reduce(function(acc, curr){
+    return acc + curr;
+  });
+};
 
 Project.fetchProjects = function(next) {
   $.ajax({
@@ -96,16 +101,16 @@ Project.fetchProjects = function(next) {
   });
 };
 
-Project.listProjects = function() {
-  filters.map(
-    function(filterObj) {
-      var filter = filterObj.name;
-      return Project.all.map(function(ProjectObj){
-        return ProjectObj.filter;
-        // return {filter: };
-      });
-    });
-};
+// Project.listProjects = function() {
+//   filters.map(
+//     function(filterObj) {
+//       var filter = filterObj.name;
+//       return Project.all.map(function(ProjectObj){
+//         return ProjectObj.filter;
+//         // return {filter: };
+//       });
+//     });
+// };
 
 
 filters.forEach(function(b) {
