@@ -117,4 +117,4 @@
     $('#filters').append(toFilterHtml(b));
   });
   module.Project = Project;
-}());
+}(window));
