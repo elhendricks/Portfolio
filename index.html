@@ -23,29 +23,19 @@
 
     </script>
 
-    <script id="filter-template" type="text/x-handlebars-template">
-
-    </script>
-
 <!-- This works with toFilterHtml -->
-    <!-- <script id="filter-template" type="text/x-handlebars-template">
+    <script id="filter-template" type="text/x-handlebars-template">
         <li>
-          <select data-filter="{{name}}">
-            <option value="">--Filter by {{name}}--</option>
+          <select >
+            <option id="{{name}}" value="">--Filter by {{name}}--</option>
           </select>
         </li>
-    </script> -->
+    </script>
 
-    <!-- This does not work
-        <script id="filter-template" type="text/x-handlebars-template">
-          <li>
-            <select data-filter="{{filters.name}}">
-              <option value="">--Filter by {{filters.name}}--</option>
-              <option value="">{{projects.{{name}}}}</option>
-            </select>
-          </li>
-        </script> -->
-
+<!-- Populate Filter Template-->
+    <script id="category-template" type="text/x-handlebars-template">
+      <option value="{{category}}">{{category}}</option>
+    </script>
 
   </head>
   <body>
@@ -65,6 +55,16 @@
     <section class="tab-section" id="projects">
       <div>
         <ul id="filters">
+          <!-- <li>
+            <select >
+              <option id="title" value="">--Filter by title--</option>
+            </select>
+          </li>
+          <li>
+            <select >
+              <option id="language" value="">--Filter by language--</option>
+            </select>
+          </li> -->
         </ul>
       </div>
     </section>
