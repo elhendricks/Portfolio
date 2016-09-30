@@ -65,4 +65,4 @@
   Project.fetchProjects(pageNavigation.renderPage);
   // Project.fetchProjects(getThings);
   module.pageNavigation = pageNavigation;
-}());
+}(window));
