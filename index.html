@@ -12,30 +12,38 @@
     <link rel="stylesheet" type="text/css" href="styles/module.css"/>
     <script id="project-template" type="text/x-handlebars-template">
 
-      <section>
+      <article>
         <h2>{{title}}</h2>
         <a href="{{github}}"><img src="{{screenshot}}" alt="{{title}}" /></a>
         <section class="project-description">
           {{{description}}}
         </section>
         <a href="#" class="read-toggle">Read More >></a>
-      </section>
+      </article>
 
     </script>
 
 <!-- This works with toFilterHtml -->
     <script id="filter-template" type="text/x-handlebars-template">
         <li>
+          {{#each Project.all}}
           <select >
-            <option id="{{name}}" value="">--Filter by {{name}}--</option>
+            <option value="">--Filter by title--</option>
+            <option value="{{title}}">{{title}}</option>
           </select>
+        </li>
+        <li>
+          <select>
+            <option value="">--Filter  by language--</option>
+            <option value="{{language}}">{{language}}</option>
+          </select>
+          {{/each}}
         </li>
     </script>
 
 <!-- Populate Filter Template-->
-    <script id="category-template" type="text/x-handlebars-template">
-      <option value="{{category}}">{{category}}</option>
-    </script>
+
+
 
   </head>
   <body>

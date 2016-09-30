@@ -20,10 +20,6 @@
     $('#main-nav .tab:first').click();
   };
 
-  pageNavigation.handleFilters = function() {
-
-  };
-
   pageNavigation.toggleProjectLength = function() {
     $('.project-description *:nth-of-type(n+2)').hide();
 
@@ -42,11 +38,19 @@
     });
 
   };
+  pageNavigation.handleFilters = function () {
 
-  pageNavigation.handleProjects = function() { Project.all.forEach(function(a)
+    $('#filters').append(toFilterHtml());
+
+  };
+
+
+
+  pageNavigation.handleProjects = function() {
+    Project.all.forEach(function(a)
     {
-    $('#projects').append(a.toHtml());
-  });
+      $('#projects').append(a.toHtml());
+    });
   };
 
   pageNavigation.handleCodeLines = function () {
@@ -60,9 +64,10 @@
     pageNavigation.handleProjects();
     pageNavigation.toggleProjectLength();
     pageNavigation.handleCodeLines();
+    pageNavigation.handleFilters();
   };
 
   Project.fetchProjects(pageNavigation.renderPage);
   // Project.fetchProjects(getThings);
   module.pageNavigation = pageNavigation;
-}());
+}(window));

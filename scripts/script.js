@@ -1,5 +1,5 @@
 (function(module){
-  var filters = [{name: 'title'}, {name: 'language'}];
+  // var filters = [{name: 'title'}, {name: 'language'}];
 
   function Project (opts) {
     this.title = opts.title;
@@ -23,18 +23,28 @@
 
 
 
-  function toFilterHtml(f) {
+  function toFilterHtml() {
+    var context = {projects: Project.all};
     var template = Handlebars.compile($('#filter-template').html());
-    var html = template(f);
+    var html = template(context);
+    Handlebars.registerHelper('each', function(context, options) {
+      var ret = '';
+
+      for(var i=0, j=context.length; i<j; i++) {
+        ret = ret + options.fn(context[i]);
+      }
+
+      return ret;
+    });
     return html;
   };
 
 
-  function toPopulateFilterHtml() {
-    var template = Handlebars.compile($('#category-template')).html();
-    var html = template ();
-    return html;
-  };
+  // function toPopulateFilterHtml() {
+  //   var template = Handlebars.compile($('#category-template')).html();
+  //   var html = template ();
+  //   return html;
+  // };
 
   // function getThings() {
   //   var filterArray = filters.map(function(ele) {
@@ -112,9 +122,10 @@
   //     });
   // };
 
-
-  filters.forEach(function(b) {
-    $('#filters').append(toFilterHtml(b));
-  });
+  //
+  // filters.forEach(function(b) {
+  //   $('#filters').append(toFilterHtml(b));
+  // });
+  module.toFilterHtml = toFilterHtml;
   module.Project = Project;
 }(window));
