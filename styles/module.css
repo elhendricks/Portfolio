@@ -20,8 +20,10 @@ header ul {
 
 header a {
   color: #fff;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-left: 1em;
+  padding-right: 1em;
   font-size: 1.5em;
 }
 
@@ -61,8 +63,9 @@ ul {
   }
 
 
-  section {
+  article {
    padding-left: 10%;
    padding-right: 10%;
   }
+
 }
