@@ -26,18 +26,20 @@
 <!-- This works with toFilterHtml -->
     <script id="filter-template" type="text/x-handlebars-template">
         <li>
-          {{#each Project.all}}
           <select >
             <option value="">--Filter by title--</option>
+            {{#each projects}}
             <option value="{{title}}">{{title}}</option>
+            {{/each}}
           </select>
         </li>
         <li>
           <select>
             <option value="">--Filter  by language--</option>
+            {{#each projects}}
             <option value="{{language}}">{{language}}</option>
+            {{/each}}
           </select>
-          {{/each}}
         </li>
     </script>
 
@@ -63,18 +65,7 @@
     <section class="tab-section" id="projects">
       <div>
         <ul id="filters">
-          <li>
-            <select >
-              <option id="title" value="">--Filter by title--</option>
-              {{#each Projects.all}}
-              <option 
-            </select>
-          </li>
-          <li>
-            <select >
-              <option id="language" value="">--Filter by language--</option>
-            </select>
-          </li>
+
         </ul>
       </div>
     </section>
