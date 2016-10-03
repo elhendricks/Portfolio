@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "\"portfolio page for code fellows\"",
-  "main": "index.js",
+  "main": "index.html",
   "dependencies": {
     "express": "^4.14.0",
     "page": "^1.7.1"
