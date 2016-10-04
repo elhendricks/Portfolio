@@ -26,18 +26,20 @@
 <!-- This works with toFilterHtml -->
     <script id="filter-template" type="text/x-handlebars-template">
         <li>
-          {{#each Project.all}}
           <select >
             <option value="">--Filter by title--</option>
+            {{#each projects}}
             <option value="{{title}}">{{title}}</option>
+            {{/each}}
           </select>
         </li>
         <li>
           <select>
             <option value="">--Filter  by language--</option>
+            {{#each projects}}
             <option value="{{language}}">{{language}}</option>
+            {{/each}}
           </select>
-          {{/each}}
         </li>
     </script>
 
@@ -52,8 +54,8 @@
       <h2>Front End Developer</h2>
       <nav id="main-nav">
         <ul class="main-nav content">
-          <li class="tab" data-section="projects"><a  href="#">Home</a></li>
-          <li class="tab" data-section="about"><a  href="#" >About</a></li>
+          <li class="tab" data-section="projects"><a  href="/">Home</a></li>
+          <li class="tab" data-section="about"><a  href="/about" >About</a></li>
           <li><a href="#">Twitter</a></li>
           <li><a href="#">LinkedIn</a></li>
           <li><a href="https://github.com/elhendricks">GitHub</a></li>
@@ -63,16 +65,7 @@
     <section class="tab-section" id="projects">
       <div>
         <ul id="filters">
-          <!-- <li>
-            <select >
-              <option id="title" value="">--Filter by title--</option>
-            </select>
-          </li>
-          <li>
-            <select >
-              <option id="language" value="">--Filter by language--</option>
-            </select>
-          </li> -->
+
         </ul>
       </div>
     </section>
@@ -86,7 +79,11 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-    <script type="text/javascript" src="scripts/script.js"></script>
-    <script type="text/javascript" src="scripts/navigation.js"></script>
+    <script src="vendor/scripts/page.js"></script>
+    <script type="text/javascript" src="scripts/models/script.js"></script>
+    <script type="text/javascript" src="scripts/views/navigation.js"></script>
+    <script src="scripts/controllers/projectController.js"></script>
+    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/routes.js"></script>
   </body>
 </html>

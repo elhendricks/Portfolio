@@ -2,23 +2,23 @@
   var pageNavigation = {};
 
 
-  pageNavigation.handleTabs = function() {
-    //on click of
-    //tab $('.tab')
-    //get the value of data-section attr
-    //hide all the other content on the page
-    //display only the tab with an id === data section attr
-    //when page loads .click() first tab
-    $('#main-nav').on('click', '.tab', function(event){
-      event.preventDefault();
-      var $tabName = $(this).attr('data-section');
-      $('.tab-section').hide();
-      $('#' + $tabName).show();
-
-    });
-
-    $('#main-nav .tab:first').click();
-  };
+  // pageNavigation.handleTabs = function() {
+  //   //on click of
+  //   //tab $('.tab')
+  //   //get the value of data-section attr
+  //   //hide all the other content on the page
+  //   //display only the tab with an id === data section attr
+  //   //when page loads .click() first tab
+  //   $('#main-nav').on('click', '.tab', function(event){
+  //     event.preventDefault();
+  //     var $tabName = $(this).attr('data-section');
+  //     $('.tab-section').hide();
+  //     $('#' + $tabName).show();
+  //
+  //   });
+  //
+  //   $('#main-nav .tab:first').click();
+  // };
 
   pageNavigation.toggleProjectLength = function() {
     $('.project-description *:nth-of-type(n+2)').hide();
@@ -38,7 +38,7 @@
     });
 
   };
-  pageNavigation.handleFilters = function () {
+  pageNavigation.generateFilters = function () {
 
     $('#filters').append(toFilterHtml());
 
@@ -53,18 +53,17 @@
     });
   };
 
-  pageNavigation.handleCodeLines = function () {
+  pageNavigation.generateCodeLines = function () {
     $('#projects').append('<h3>Erica has written '+ Project.countLines() +' lines of code--which is in no way a fabricated number.');
   };
 
   //invoke the functions
   pageNavigation.renderPage = function() {
 
-    pageNavigation.handleTabs();
     pageNavigation.handleProjects();
     pageNavigation.toggleProjectLength();
-    pageNavigation.handleCodeLines();
-    pageNavigation.handleFilters();
+    pageNavigation.generateCodeLines();
+    pageNavigation.generateFilters();
   };
 
   Project.fetchProjects(pageNavigation.renderPage);

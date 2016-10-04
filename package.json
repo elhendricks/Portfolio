@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "\"portfolio page for code fellows\"",
+  "main": "index.html",
+  "dependencies": {
+    "express": "^4.14.0",
+    "page": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elhendricks/Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elhendricks/Portfolio/issues"
+  },
+  "homepage": "https://github.com/elhendricks/Portfolio#readme"
+}
