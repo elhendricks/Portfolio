@@ -2,6 +2,7 @@ var githubData = {};
 
 githubData.repoData = [];
 githubData.repoNames = [];
+githubData.languageBytes = [];
 
 githubData.getData = function(callback) {
   $.ajax({
@@ -14,12 +15,13 @@ githubData.getData = function(callback) {
           return item.name;
         });
       });
-      callback();
+      callback( );
+      console.log(githubData.languageBytes);
     },
     error: function() {
       console.log('Error inside githubData ajax call');
     },
-    header: {Authorization: 'token ' + token}
+    headers: {Authorization: 'token ' + token}
   });
 };
 
@@ -28,13 +30,13 @@ githubData.getMyLanguages = function(b) {
     url: 'https://api.github.com/repos/elhendricks/'+ b +'/languages',
     type: 'GET',
     success: function(data) {
-
+      githubData.languageBytes.push(data);
       console.log('getMyLanguages data: ', data);
     },
     error: function() {
       console.log('Error inside githubData ajax call');
     },
-    header: {Authorization: 'token ' + token}
+    headers: {Authorization: 'token ' + token}
   });
 };
 
@@ -42,8 +44,8 @@ githubData.getData(temp);
 
 function temp() {
   githubData.repoNames.forEach(function(repoName) {
-    console.log(repoName);
     githubData.getMyLanguages(repoName);
+
   });
 }
 
