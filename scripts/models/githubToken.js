@@ -1,1 +1,0 @@
-var token = '5de6f94208e27b9cc4544406fe658a552cc56c7f';

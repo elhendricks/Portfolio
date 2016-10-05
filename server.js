@@ -7,7 +7,7 @@ function proxyGitHub(request, response) {
   console.log('Routing Github request for ', request.params[0]);
   (requestProxy({
     url: 'https://api.github.com/' + request.params[0],
-    headers: {Authorization: 'token ' + GITHUB_TOKEN}
+    headers: {Authorization: 'token ' + process.env.GITHUB_TOKEN}
   }))();
 }
 
