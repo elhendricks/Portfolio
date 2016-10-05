@@ -16,7 +16,7 @@ githubData.getData = function(callback) {
         });
       });
       callback( );
-      console.log(githubData.languageBytes);
+      languageReduce();
     },
     error: function() {
       console.log('Error inside githubData ajax call');
@@ -47,6 +47,15 @@ function temp() {
     githubData.getMyLanguages(repoName);
 
   });
+}
+
+function languageReduce() {
+  return githubData.languageBytes.reduce(function(acc, curr){
+    for (var key in curr) {
+      acc[key] = acc[key] + curr[key];
+    }
+    return acc;
+  }, {JavaScript: 0, HTML: 0, CSS: 0});
 }
 
 // var temp = githubData.repoNames[0];
