@@ -6,7 +6,7 @@ githubData.languageBytes = [];
 
 githubData.getData = function(callback) {
   $.ajax({
-    url: 'https://api.github.com/users/elhendricks/repos',
+    url: '/github/users/elhendricks/repos',
     type: 'GET',
     success: function(data) {
       data.forEach(function(a) {
@@ -20,14 +20,13 @@ githubData.getData = function(callback) {
     },
     error: function() {
       console.log('Error inside githubData ajax call');
-    },
-    headers: {Authorization: 'token ' + token}
+    }
   });
 };
 
 githubData.getMyLanguages = function(b) {
   $.ajax({
-    url: 'https://api.github.com/repos/elhendricks/'+ b +'/languages',
+    url: '/github/repos/elhendricks/'+ b +'/languages',
     type: 'GET',
     success: function(data) {
       githubData.languageBytes.push(data);
@@ -35,8 +34,7 @@ githubData.getMyLanguages = function(b) {
     },
     error: function() {
       console.log('Error inside githubData ajax call');
-    },
-    headers: {Authorization: 'token ' + token}
+    }
   });
 };
 
